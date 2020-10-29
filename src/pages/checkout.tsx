@@ -123,30 +123,37 @@ const CheckoutPage: React.FC = () => {
             )}
             <h2>{isGift ? 'Recipient' : 'Your'} details</h2>
             <p>To whom in Stockholm should we deliver?</p>
-
-            <label htmlFor="firstName">First name</label>
-            <input
-              name="firstName"
-              type="text"
-              placeholder="Jane"
-              defaultValue={firstName}
-              ref={register({
-                required: { value: true, message: 'First name is required' },
-              })}
-            />
-            <span role="alert">{errors?.firstName?.message}</span>
-
-            <label htmlFor="lastName">Last name</label>
-            <input
-              name="lastName"
-              type="text"
-              placeholder="Doe"
-              defaultValue={lastName}
-              ref={register({
-                required: { value: true, message: 'Last name is required' },
-              })}
-            />
-            <span role="alert">{errors?.lastName?.message}</span>
+            <div className={s.formRow}>
+              <div>
+                <label htmlFor="firstName">First name</label>
+                <input
+                  name="firstName"
+                  type="text"
+                  placeholder="Jane"
+                  defaultValue={firstName}
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: 'First name is required',
+                    },
+                  })}
+                />
+                <span role="alert">{errors?.firstName?.message}</span>
+              </div>
+              <div>
+                <label htmlFor="lastName">Last name</label>
+                <input
+                  name="lastName"
+                  type="text"
+                  placeholder="Doe"
+                  defaultValue={lastName}
+                  ref={register({
+                    required: { value: true, message: 'Last name is required' },
+                  })}
+                />
+                <span role="alert">{errors?.lastName?.message}</span>
+              </div>
+            </div>
 
             <label htmlFor="phone">Phone number</label>
             <input

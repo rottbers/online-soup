@@ -46,7 +46,7 @@ const ReceiptPage: React.FC = () => {
         </header>
         <section className={s.receiptSection}>
           <h2>Ordered soups</h2>
-          <ul className={s.productsSummaryContainer}>
+          <ul>
             {products.map(({ id, name, quantity, priceSEK }) => (
               <ProductListItem
                 key={id}

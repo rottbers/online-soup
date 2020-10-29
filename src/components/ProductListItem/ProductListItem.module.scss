@@ -3,11 +3,13 @@
 .productListItem {
   display: flex;
   flex-direction: row;
-  margin-bottom: 12px;
-  padding-bottom: 12px;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
 
   &:not(:last-child) {
     border-bottom: 1px solid $dark-grey;
+    margin-bottom: 1rem;
   }
 
   img {
@@ -25,8 +27,8 @@
 }
 
 .productNameAndPrice {
-  width: 100%;
   margin: 0.5rem;
+  margin-right: auto;
 
   h3 {
     font-size: 1.125rem;

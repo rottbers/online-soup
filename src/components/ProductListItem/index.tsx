@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import QuantityButtons from '@/components/QuantityButtons';
 
 import s from './ProductListItem.module.scss';
@@ -23,7 +24,7 @@ const ProductListItem: React.FC<Props> = ({
 }) => {
   return (
     <li className={s.productListItem}>
-      <img src={imageURL} alt={name} />
+      <Image src={imageURL} alt={name} width={65} height={65} />
       <div className={s.productNameAndPrice}>
         <h3>{name}</h3>
         <p>{`${priceSEK * quantity} SEK`}</p>

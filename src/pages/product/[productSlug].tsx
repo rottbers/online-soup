@@ -71,7 +71,7 @@ const ProductPage: React.FC = () => {
           </p>
         </section>
         <div className={s.buttonsContainer}>
-          <div style={{ padding: '16px 12px' }}>
+          <div style={{ padding: '0px 12px' }}>
             <QuantityButtons
               min={1}
               max={99}
