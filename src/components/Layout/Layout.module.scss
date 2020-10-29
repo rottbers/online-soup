@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.layout {
+  display: grid;
+  grid-template-columns: 12px auto 12px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+
+  @media (min-width: $lg) {
+    grid-template-columns: auto $md auto;
+  }
+}

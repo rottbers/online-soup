@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+.container {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  svg {
+    font-size: 4rem;
+  }
+}
+
+.svg {
+  fill: $primary-text;
+}

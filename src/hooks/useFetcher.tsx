@@ -1,0 +1,21 @@
+import useSWR from 'swr';
+
+async function fetcher(url: string) {
+  const response = await fetch(url);
+  if (!response.ok) throw Error(`${response.status}: ${response.statusText}`);
+  const data = await response.json();
+  return data;
+}
+
+interface UseFetcher<T> {
+  data: T;
+  error: unknown;
+  loading: boolean;
+}
+
+function useFetcher<T = unknown>(url: string): UseFetcher<T> {
+  const { error, data } = useSWR(url, fetcher);
+  return { data, error, loading: !data && !error };
+}
+
+export default useFetcher;

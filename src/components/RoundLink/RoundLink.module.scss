@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+
+.roundLink {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid #c4c4c4;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease-in;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken(white, 10%);
+  }
+
+  span {
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: $primary-accent;
+    color: white;
+    font-size: 0.825rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}
