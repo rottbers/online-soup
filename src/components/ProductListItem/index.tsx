@@ -24,7 +24,7 @@ const ProductListItem: React.FC<Props> = ({
 }) => {
   return (
     <li className={s.productListItem}>
-      <Image src={imageURL} alt={name} width={65} height={65} />
+      <Image src={imageURL} alt={name} width={65} height={65} priority />
       <div className={s.productNameAndPrice}>
         <h3>{name}</h3>
         <p>{`${priceSEK * quantity} SEK`}</p>

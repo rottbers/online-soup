@@ -11,10 +11,6 @@ $hero-height: 65vh;
   justify-content: space-between;
   z-index: 3;
   padding: 12px;
-
-  img {
-    height: 52px;
-  }
 }
 
 .hero {
@@ -61,6 +57,7 @@ $hero-height: 65vh;
 
     input {
       height: 60px;
+      width: 100%;
     }
 
     span[role='status'] {

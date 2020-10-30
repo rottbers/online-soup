@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Image from 'next/image';
 
 import Head from '@/components/Head';
 import Layout from '@/components/Layout/';
@@ -80,7 +81,7 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
               />
             )}
           </nav>
-          <img src={imageURL} alt={name} />
+          <Image src={imageURL} alt={name} unsized />
         </div>
         <section className={s.productInfo}>
           <h1>{name}</h1>

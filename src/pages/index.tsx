@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import AlgoliaPlaces from 'algolia-places-react';
 
 import Head from '@/components/Head';
@@ -48,7 +49,12 @@ const LandingPage: React.FC = () => {
       />
       <Layout>
         <header className={s.header}>
-          <img src="/images/logo.png" alt="logo" />
+          <Image
+            src="/images/favicon-192x192.png"
+            alt="logo"
+            width={50}
+            height={50}
+          />
           {itemsInCart > 0 && (
             <RoundLink
               type="cart"
