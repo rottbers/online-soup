@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
@@ -30,12 +29,6 @@ const CheckoutPage: React.FC = () => {
     products,
   } = state;
 
-  // redirect to landing page if empty cart
-  useEffect(() => {
-    if (!products.length && router) router.push('/');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   async function onSubmit(data: Partial<Order>) {
     dispatch({ type: 'UPDATE_DETAILS', data });
     router.push('/pay');
@@ -46,7 +39,7 @@ const CheckoutPage: React.FC = () => {
   const totalCost = deliveryCostSEK + productsCost;
 
   const productsInCart = products.length !== 0;
-  const canSubmit = Object.keys(errors).length === 0 && productsInCart;
+  const cannotSubmit = Object.keys(errors).length !== 0 || !productsInCart;
 
   const isGift = watch('gift');
 
@@ -199,7 +192,7 @@ const CheckoutPage: React.FC = () => {
           className={s.submitButton}
           form="form"
           type="submit"
-          disabled={!canSubmit}
+          disabled={cannotSubmit}
         >
           Continue {productsInCart && <span>{totalCost} SEK</span>}
         </button>

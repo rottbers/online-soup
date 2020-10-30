@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer } from 'react';
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useState,
+} from 'react';
 
 import { Order, Product } from '@/types/index';
 
@@ -83,7 +89,18 @@ const OrderContext = createContext<Context>({
 
 // prettier-ignore
 export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [isInitialized, setIsInitialized] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    if (isInitialized) {
+      window.localStorage.setItem('order', JSON.stringify(state));
+    } else {
+      const orderCache = JSON.parse(window.localStorage.getItem('order'));
+      dispatch({ type: 'UPDATE_DETAILS', data: { ...initialState, ...orderCache } });
+      setIsInitialized(true);
+    }
+  }, [state, isInitialized]);
 
   return (
     <OrderContext.Provider value={{ state, dispatch }}>
