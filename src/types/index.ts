@@ -9,6 +9,7 @@ export interface Product {
   ingredients: Ingredient[];
   priceSEK: number;
   quantity?: number;
+  imageURL?: string;
 }
 
 export interface Order {

@@ -1,31 +1,52 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Head from '@/components/Head';
 import Layout from '@/components/Layout/';
-import Spinner from '@/components/Spinner';
 import RoundLink from '@/components/RoundLink';
 import QuantityButtons from '@/components/QuantityButtons/';
 
 import { useOrderContext } from '@/contexts/OrderContext';
-import { parseIdFromSlug, calcCartQuantity } from '@/utilities/index';
+import {
+  parseIdFromSlug,
+  generateSlug,
+  calcCartQuantity,
+} from '@/utilities/index';
+import { Product } from '@/types/index';
 
 import s from '@/styles/pages/ProductPage.module.scss';
 
 import products from '../../mockProducts';
 
-const ProductPage: React.FC = () => {
-  const { productSlug } = useRouter().query;
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = products.map((product) => {
+    const productSlug = generateSlug(product.id, product.name);
+    return { params: { productSlug } };
+  });
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const productSlug =
+    params.productSlug === typeof 'string'
+      ? params.productSlug
+      : params.productSlug[0];
+  const productId = parseIdFromSlug(productSlug);
+  const product = products.filter((product) => product.id === productId)[0];
+
+  return { props: { product, productSlug } };
+};
+
+interface Props {
+  product: Product;
+  productSlug: string;
+}
+
+const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
   const [quantity, setQuantity] = useState(1);
   const { state, dispatch } = useOrderContext();
   const { products: productsInCart } = state;
-
-  if (!productSlug) return <Spinner fullScreen />;
-
-  // @ts-expect-error TODO: look into next router types
-  const productId = parseIdFromSlug(productSlug);
-
-  const product = products.filter((product) => product.id === productId)[0];
 
   const { name, description, ingredients, priceSEK, imageURL } = product;
 

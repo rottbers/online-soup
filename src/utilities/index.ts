@@ -1,10 +1,7 @@
 import { Product } from '@/types/index';
 
-export function generateProductSlug(
-  id: string | number,
-  productName: string
-): string {
-  return `/product/${id}-${productName.split(' ').join('-').toLowerCase()}`;
+export function generateSlug(id: string | number, productName: string): string {
+  return `${id}-${productName.split(' ').join('-').toLowerCase()}`;
 }
 
 export function parseIdFromSlug(slug: string): number {

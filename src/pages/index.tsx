@@ -8,7 +8,7 @@ import ProductCard from '@/components/ProductCard';
 import RoundLink from '@/components/RoundLink';
 
 import { useOrderContext } from '@/contexts/OrderContext';
-import { generateProductSlug, calcCartQuantity } from '@/utilities/index';
+import { generateSlug, calcCartQuantity } from '@/utilities/index';
 
 import s from '@/styles/pages/LandingPage.module.scss';
 
@@ -83,7 +83,7 @@ const LandingPage: React.FC = () => {
           <ul>
             {products.map(({ id, name, priceSEK, imageURL }) => (
               <li key={id}>
-                <Link href={generateProductSlug(id, name)}>
+                <Link href={`/product/${generateSlug(id, name)}`}>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                   <a>
                     <ProductCard
