@@ -40,7 +40,12 @@ const ProductPage: React.FC = () => {
 
   return (
     <>
-      <Head title={name} description={description} image={imageURL} />
+      <Head
+        title={name}
+        description={description}
+        imageURL={imageURL}
+        path={`/${productSlug}`}
+      />
       <Layout>
         <div className={s.productHero}>
           <nav>

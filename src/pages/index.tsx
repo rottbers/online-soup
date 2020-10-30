@@ -42,7 +42,10 @@ const LandingPage: React.FC = () => {
 
   return (
     <>
-      <Head description="Soups with locally sourced ingredients, delivered in Stockholm" />
+      <Head
+        description="Soups with locally sourced ingredients, delivered in Stockholm"
+        path="/"
+      />
       <Layout>
         <header className={s.header}>
           <img src="/images/logo.png" alt="logo" />

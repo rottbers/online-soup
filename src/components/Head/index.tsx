@@ -3,11 +3,23 @@ import NextHead from 'next/head';
 interface Props {
   title?: string;
   description?: string;
-  image?: string;
+  imageURL?: string;
+  path?: string;
 }
 
-const Head: React.FC<Props> = ({ title, description, image }) => {
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
+const Head: React.FC<Props> = ({ title, description, imageURL, path }) => {
+  const isFullURL = (url: string) => url.slice(0, 4).toLowerCase() === 'http';
+
   const metaTitle = (title ? title + ' | ' : '') + 'Online soup delivery';
+  const metaURL = baseURL + path;
+
+  const metaImageURL = imageURL
+    ? isFullURL(imageURL)
+      ? imageURL
+      : baseURL + imageURL
+    : baseURL + '/images/thumbnail.png';
 
   return (
     <NextHead>
@@ -22,14 +34,14 @@ const Head: React.FC<Props> = ({ title, description, image }) => {
           <meta property="twitter:description" content={description} />
         </>
       )}
-      {image && (
+      {path && (
         <>
-          <meta property="og:image" content={image} />
-          <meta property="twitter:image" content={image} />
+          <meta property="og:url" content={metaURL} />
+          <meta property="twitter:url" content={metaURL} />
         </>
       )}
-      {/* <meta property="og:url" content={metaUrl} />
-      <meta property="twitter:url" content={metaUrl} /> */}
+      <meta property="og:image" content={metaImageURL} />
+      <meta property="twitter:image" content={metaImageURL} />
       <meta property="twitter:card" content="summary_large_image" />
     </NextHead>
   );
