@@ -1,4 +1,6 @@
-import styles from './ProductCard.module.scss';
+import Image from 'next/image';
+
+import s from './ProductCard.module.scss';
 
 interface Props {
   imageURL: string;
@@ -13,8 +15,8 @@ const ProductCard: React.FC<Props> = ({
   description,
   priceSEK,
 }) => (
-  <div className={styles.card}>
-    <img src={imageURL} alt={name} />
+  <div className={s.card}>
+    <Image src={imageURL} alt={name} unsized />
     <h3>
       <span>{name}</span> <span>{priceSEK} SEK</span>
     </h3>

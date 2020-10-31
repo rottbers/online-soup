@@ -122,19 +122,21 @@ const PaymentPage: React.FC = () => {
   const isSuccess = paymentState.status === 'success';
   const isError = paymentState.status === 'error';
 
+  const isDisabled = isProcessing || isSuccess;
+
   return (
     <>
       <Head title="Payment" />
       <Layout>
         <header className={s.header}>
-          <RoundLink href="/checkout" type="back" />
+          <nav>{!isDisabled && <RoundLink href="/checkout" type="back" />}</nav>
           <h1>Payment</h1>
           <div></div>
         </header>
         <form className={s.form} onSubmit={onSubmit}>
           <span role="alert">{paymentState.error}</span>
           <CardElement options={cardElementOptions} />
-          <button type="submit" disabled={isProcessing || isSuccess}>
+          <button type="submit" disabled={isDisabled}>
             {isIdle && `Pay ${totalCost} SEK`}
             {isProcessing && <Spinner />}
             {isSuccess && 'Payment successful ✌️'}

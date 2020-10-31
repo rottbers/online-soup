@@ -8,17 +8,19 @@
   padding-bottom: 1rem;
 
   &:not(:last-child) {
-    border-bottom: 1px solid $dark-grey;
+    border-bottom: 1px solid $light-grey;
     margin-bottom: 1rem;
   }
 
   img {
-    border-radius: 8px;
+    border-radius: $border-radius * 2;
     object-fit: cover;
+    object-position: center;
+    background-color: $light-grey;
   }
 
   span {
-    font-weight: bold;
+    font-weight: $font-semibold;
     font-size: 1.125rem;
     margin: 0.5rem;
   }

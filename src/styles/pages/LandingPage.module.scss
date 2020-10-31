@@ -1,6 +1,6 @@
 @import '../variables';
 
-$hero-height: 65vh;
+$hero-height: 75vh;
 
 .header {
   position: absolute;
@@ -10,7 +10,7 @@ $hero-height: 65vh;
   display: flex;
   justify-content: space-between;
   z-index: 3;
-  padding: 12px;
+  padding: $gutter;
 }
 
 .hero {
@@ -30,16 +30,17 @@ $hero-height: 65vh;
   background-position-x: 50vw;
   background-position-y: 50%;
 
-  &:after {
+  &::before {
     content: '';
     top: 0;
     left: 0;
     position: absolute;
-    background-color: $light-grey;
     height: $hero-height;
     width: 100%;
-    opacity: 0.6;
+    opacity: 0.5;
     z-index: 2;
+    background: $light-grey;
+    background: linear-gradient(to right, #ead0a0, $light-grey);
   }
 
   * {
@@ -58,11 +59,12 @@ $hero-height: 65vh;
     input {
       height: 60px;
       width: 100%;
+      border-radius: $border-radius;
     }
 
     span[role='status'] {
       text-align: center;
-      font-weight: bold;
+      font-weight: $font-semibold;
       display: block;
       background: $primary-text;
       color: white;
@@ -97,8 +99,8 @@ $hero-height: 65vh;
 .footer {
   grid-row: 3 / 4;
   grid-column: 1 / -1;
-  background-color: black;
+  background-color: $primary-text;
   color: white;
-  padding: 20px;
+  padding: 2rem;
   text-align: center;
 }

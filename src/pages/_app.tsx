@@ -1,9 +1,7 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
-import 'normalize.css/normalize.css';
-import 'fontsource-quicksand/index.css';
-import '../styles/global.scss';
+import '@/styles/global.scss';
 
 import { OrderProvider } from '@/contexts/OrderContext';
 

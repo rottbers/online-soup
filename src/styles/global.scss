@@ -1,3 +1,6 @@
+@import '~normalize.css/normalize';
+@import '~fontsource-quicksand/400';
+@import '~fontsource-quicksand/600';
 @import 'variables';
 
 *,
@@ -10,6 +13,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Quicksand', sans-serif;
+  font-weight: $font-regular;
+  text-rendering: optimizeLegibility;
   color: $primary-text;
 }
 
@@ -28,4 +33,10 @@ ol {
 button {
   border: none;
   cursor: pointer;
+
+  &:disabled {
+    background-color: $light-grey;
+    text-decoration: none;
+    cursor: default;
+  }
 }

@@ -1,17 +1,11 @@
 @import '../../styles/variables';
 
-$border-radius: 4px;
-
 .card {
   border-radius: $border-radius;
-  max-width: 26rem;
+  max-width: 400px;
   margin: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-
-  @media (min-width: $md) {
-    min-width: 24rem;
-  }
 
   &:hover,
   &:focus,
@@ -21,17 +15,19 @@ $border-radius: 4px;
 
   img {
     width: 100%;
-    max-height: 12rem;
+    height: 260px;
     object-fit: cover;
+    object-position: center;
     border-radius: $border-radius $border-radius 0 0;
+    background-color: $light-grey;
   }
 
   h3 {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     padding: 1rem;
     margin: 0;
-    font-weight: bold;
     font-size: 1rem;
   }
 }

@@ -16,15 +16,14 @@ export default [
   },
   {
     id: 1,
-    name: 'Gazpacho',
-    description: 'Some description of gazpacho to read here.',
+    name: 'Some soup',
+    description: 'Some description of some soup to read here.',
     ingredients: [
-      { name: 'onion' },
-      { name: 'tomato sauce' },
+      { name: 'tofu' },
+      { name: 'bell pepper' },
       { name: 'garlic' },
-      { name: 'cumin' },
-      { name: 'vinegar' },
-      { name: 'cucumber' },
+      { name: 'chili' },
+      { name: 'sugar peas' },
     ],
     vegan: true,
     priceSEK: 99,
@@ -61,7 +60,7 @@ export default [
     id: 4,
     name: 'Curry soup',
     description:
-      'Some description about seafood Soup here covering some the details.',
+      'Some description about seafood soup here covering some details.',
     ingredients: [
       { name: 'curry' },
       { name: 'salmon' },

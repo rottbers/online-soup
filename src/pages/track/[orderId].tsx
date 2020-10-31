@@ -79,7 +79,7 @@ const TrackingPage: React.FC = () => {
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
           onClick={() => !isDelivered && setStatusCode(statusCode + 1)}
-          className={s.mapSection}
+          className={s.map}
         >
           {isDelivered && <RoundLink href="/" type="close" />}
           <ImMap2 />
@@ -89,7 +89,7 @@ const TrackingPage: React.FC = () => {
             <b>Click me to emulate progress</b>
           </p>
         </div>
-        <section className={s.statusInfo}>
+        <section className={s.info}>
           <h1>{statusMessage}</h1>
           {!isDelivered && (
             <p>

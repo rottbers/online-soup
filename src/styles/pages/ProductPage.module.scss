@@ -1,9 +1,11 @@
 @import '../variables';
 
-.productHero {
+.hero {
   position: relative;
   grid-column: 1 / -1;
   grid-row: 1 / 2;
+  min-height: 50vh;
+  background-color: $light-grey;
 
   nav {
     position: absolute;
@@ -12,17 +14,18 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 12px;
+    padding: $gutter;
   }
 
   img {
     object-fit: cover;
+    object-position: center;
     width: 100%;
-    max-height: 50vh;
+    height: 50vh;
   }
 }
 
-.productInfo {
+.info {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
 
@@ -47,17 +50,17 @@
   }
 }
 
-.productButtons {
-  grid-row: 3/4;
+.buttons {
+  grid-row: 3 / 4;
   grid-column: 1 / -1;
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-weight: bold;
+  font-weight: $font-semibold;
 }
 
 .addToCartButton {
-  font-weight: bold;
+  font-weight: $font-semibold;
   background-color: $primary-accent;
   text-transform: uppercase;
   text-align: center;
@@ -66,7 +69,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px;
+  padding: $gutter;
 
   &:hover,
   &:focus,

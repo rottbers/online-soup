@@ -71,7 +71,7 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
         path={`/${productSlug}`}
       />
       <Layout>
-        <div className={s.productHero}>
+        <div className={s.hero}>
           <nav>
             <RoundLink href="/" type="back" />
             {itemsInCart !== 0 && (
@@ -85,7 +85,7 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
           </nav>
           <Image src={imageURL} alt={name} unsized />
         </div>
-        <section className={s.productInfo}>
+        <section className={s.info}>
           <header>
             <h1>{name}</h1>
             {vegan && (
@@ -106,7 +106,7 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
             ))}
           </p>
         </section>
-        <div className={s.productButtons}>
+        <div className={s.buttons}>
           <div style={{ padding: '0px 12px' }}>
             <QuantityButtons
               min={1}

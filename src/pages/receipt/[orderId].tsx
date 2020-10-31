@@ -40,11 +40,11 @@ const ReceiptPage: React.FC = () => {
     <>
       <Head title="Your receipt" />
       <Layout>
-        <header className={s.receiptHeader}>
+        <header className={s.header}>
           <h1>Thanks for your order!</h1>
           <p>Order #{orderId}</p>
         </header>
-        <section className={s.receiptSection}>
+        <section className={s.section}>
           <h2>Ordered soups</h2>
           <ul>
             {products.map(({ id, name, quantity, priceSEK }) => (
@@ -61,7 +61,7 @@ const ReceiptPage: React.FC = () => {
             productsCost={productsCost}
             deliveryCost={deliveryCostSEK}
           />
-          <div className={s.recipientDetails}>
+          <div className={s.details}>
             <h2>Recipient details</h2>
             <h3>Name</h3>
             <p>
