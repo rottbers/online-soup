@@ -10,6 +10,7 @@ export interface Product {
   priceSEK: number;
   quantity?: number;
   imageURL?: string;
+  vegan?: boolean;
 }
 
 export interface Order {

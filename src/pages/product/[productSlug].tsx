@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 
+import { RiLeafLine } from 'react-icons/ri';
+
 import Head from '@/components/Head';
 import Layout from '@/components/Layout/';
 import RoundLink from '@/components/RoundLink';
@@ -49,7 +51,7 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
   const { state, dispatch } = useOrderContext();
   const { products: productsInCart } = state;
 
-  const { name, description, ingredients, priceSEK, imageURL } = product;
+  const { name, description, ingredients, priceSEK, imageURL, vegan } = product;
 
   function handleAddProduct() {
     dispatch({
@@ -84,7 +86,14 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
           <Image src={imageURL} alt={name} unsized />
         </div>
         <section className={s.productInfo}>
-          <h1>{name}</h1>
+          <header>
+            <h1>{name}</h1>
+            {vegan && (
+              <p>
+                vegan <RiLeafLine />
+              </p>
+            )}
+          </header>
           <p>{description}</p>
           <p>
             <b>Ingredients:</b>
@@ -97,7 +106,7 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
             ))}
           </p>
         </section>
-        <div className={s.buttonsContainer}>
+        <div className={s.productButtons}>
           <div style={{ padding: '0px 12px' }}>
             <QuantityButtons
               min={1}
