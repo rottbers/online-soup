@@ -1,6 +1,6 @@
 @import '../variables';
 
-$hero-height: 75vh;
+$hero-height: 100vh;
 
 .header {
   position: absolute;
@@ -18,7 +18,6 @@ $hero-height: 75vh;
   grid-column: 1 / -1;
   min-height: $hero-height;
   padding: 1rem;
-  position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -29,6 +28,10 @@ $hero-height: 75vh;
   background-size: contain;
   background-position-x: 50vw;
   background-position-y: 50%;
+
+  @media (min-width: $lg) {
+    background-size: auto;
+  }
 
   &::before {
     content: '';
@@ -49,6 +52,7 @@ $hero-height: 75vh;
 
   &Inner {
     max-width: $md;
+    min-height: 260px;
     width: 100%;
 
     h1 {
@@ -71,7 +75,22 @@ $hero-height: 75vh;
       width: fit-content;
       margin: 1rem auto;
       padding: 0.25rem 1rem;
-      // min-height: 3.4rem;
+      border-radius: $border-radius;
+
+      button {
+        text-decoration: underline;
+        background: transparent;
+        color: white;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: darken(white, 10%);
+        }
+      }
     }
   }
 }
@@ -80,9 +99,13 @@ $hero-height: 75vh;
   grid-row: 2 / 3;
   grid-column: 1 / -1;
   margin: 2rem 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   h2 {
-    text-align: center;
     margin: 0;
     padding-top: 1rem;
     font-size: 1.65rem;

@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import AlgoliaPlaces from 'algolia-places-react';
+import { motion } from 'framer-motion';
 
 import Head from '@/components/Head';
 import Layout from '@/components/Layout';
@@ -16,7 +17,8 @@ import s from '@/styles/pages/LandingPage.module.scss';
 import products from '../mockProducts';
 
 const LandingPage: React.FC = () => {
-  const [searchMessage, setSearchMessage] = useState('');
+  const [withinDeliveryArea, setWithinDeliveryArea] = useState(null);
+  const [showAreaSearchMessage, setShowAreaSearchMessage] = useState(false);
   const { state, dispatch } = useOrderContext();
   const { products: productsInCart } = state;
 
@@ -34,12 +36,24 @@ const LandingPage: React.FC = () => {
     const { administrative, postcode, name: street } = data.suggestion;
 
     if (administrative !== 'Stockholms län') {
-      setSearchMessage('😔 Sorry, we only deliver within Stockholm.');
+      setWithinDeliveryArea(false);
     } else {
-      setSearchMessage('👌 Yay! We deliver to you - now pick some soups!');
+      setWithinDeliveryArea(true);
       dispatch({ type: 'UPDATE_DETAILS', data: { street, postcode } });
     }
+    setShowAreaSearchMessage(true);
   }
+
+  const productsRef = useRef(null);
+  const scrollToProducts = () =>
+    setTimeout(
+      () =>
+        window.scrollTo({
+          top: productsRef.current.offsetTop,
+          behavior: 'smooth',
+        }),
+      100
+    );
 
   return (
     <>
@@ -74,18 +88,28 @@ const LandingPage: React.FC = () => {
               placeholder="Enter your address"
               options={algoliaOptions}
               onChange={(data) => onChange(data)}
-              onClear={() => setSearchMessage('')}
+              onClear={() => setShowAreaSearchMessage(false)}
             />
-            <span
-              role="status"
-              style={{ visibility: !searchMessage ? 'hidden' : 'visible' }}
-            >
-              {searchMessage}
-            </span>
+            {showAreaSearchMessage && (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                role="status"
+              >
+                {withinDeliveryArea ? (
+                  <>
+                    👌 Yay! We deliver to you - now{' '}
+                    <button onClick={scrollToProducts}>pick some soups</button>!
+                  </>
+                ) : (
+                  <>😔 Sorry, we only deliver within Stockholm</>
+                )}
+              </motion.span>
+            )}
           </div>
         </section>
-        <section className={s.products}>
-          <h2 id="all-soups">All our soups</h2>
+        <section className={s.products} ref={productsRef} id="all-soups">
+          <h2>All our soups</h2>
           <ul>
             {products.map(({ id, name, priceSEK, imageURL }) => (
               <li key={id}>

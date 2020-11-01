@@ -73,7 +73,7 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
       <Layout>
         <div className={s.hero}>
           <nav>
-            <RoundLink href="/" type="back" />
+            <RoundLink href="/#all-soups" type="back" />
             {itemsInCart !== 0 && (
               <RoundLink
                 href="/checkout"
