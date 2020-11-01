@@ -8,6 +8,7 @@ import { OrderProvider } from '@/contexts/OrderContext';
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
     <Head>
+      <meta name="theme-color" content="#050505"/>
       <link rel="manifest" href="/manifest.webmanifest" key="manifest" />
       <link rel="shortcut icon" href="/images/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180x180.png" />
