@@ -16,7 +16,13 @@ const ProductCard: React.FC<Props> = ({
   priceSEK,
 }) => (
   <div className={s.card}>
-    <Image src={imageURL} alt={name} unsized />
+    <Image
+      src={imageURL}
+      alt={name}
+      layout="intrinsic"
+      width={400}
+      height={250}
+    />
     <h3>
       <span>{name}</span> <span>{priceSEK} SEK</span>
     </h3>

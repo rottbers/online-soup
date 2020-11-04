@@ -83,7 +83,7 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
               />
             )}
           </nav>
-          <Image src={imageURL} alt={name} unsized />
+          <Image src={imageURL} alt={name} layout="fill" />
         </div>
         <section className={s.info}>
           <header>
