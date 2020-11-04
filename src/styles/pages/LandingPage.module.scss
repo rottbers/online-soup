@@ -77,13 +77,9 @@ $hero-height: 100vh;
       padding: 0.25rem 1rem;
       border-radius: $border-radius;
 
-      button {
+      a {
         text-decoration: underline;
-        background: transparent;
         color: white;
-        font-weight: 600;
-        margin: 0;
-        padding: 0;
 
         &:hover,
         &:active,

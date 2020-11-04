@@ -32,7 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const productSlug =
-    params.productSlug === typeof 'string'
+    typeof params.productSlug === 'string'
       ? params.productSlug
       : params.productSlug[0];
   const productId = parseIdFromSlug(productSlug);
@@ -68,12 +68,12 @@ const ProductPage: React.FC<Props> = ({ product, productSlug }) => {
         title={name}
         description={description}
         imageURL={imageURL}
-        path={`/${productSlug}`}
+        path={`/products/${productSlug}`}
       />
       <Layout>
         <div className={s.hero}>
           <nav>
-            <RoundLink href="/#all-soups" type="back" />
+            <RoundLink href="/products" type="back" />
             {itemsInCart !== 0 && (
               <RoundLink
                 href="/checkout"

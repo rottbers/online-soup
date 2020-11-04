@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import AlgoliaPlaces from 'algolia-places-react';
@@ -44,17 +44,6 @@ const LandingPage: React.FC = () => {
     setShowAreaSearchMessage(true);
   }
 
-  const productsRef = useRef(null);
-  const scrollToProducts = () =>
-    setTimeout(
-      () =>
-        window.scrollTo({
-          top: productsRef.current.offsetTop,
-          behavior: 'smooth',
-        }),
-      100
-    );
-
   return (
     <>
       <Head
@@ -68,6 +57,7 @@ const LandingPage: React.FC = () => {
             alt="logo"
             width={50}
             height={50}
+            priority
           />
           {itemsInCart > 0 && (
             <RoundLink
@@ -99,7 +89,11 @@ const LandingPage: React.FC = () => {
                 {withinDeliveryArea ? (
                   <>
                     👌 Yay! We deliver to you - now{' '}
-                    <button onClick={scrollToProducts}>pick some soups</button>!
+                    <Link href="/products">
+                      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                      <a>pick some soups</a>
+                    </Link>
+                    !
                   </>
                 ) : (
                   <>😔 Sorry, we only deliver within Stockholm</>
@@ -108,12 +102,12 @@ const LandingPage: React.FC = () => {
             )}
           </div>
         </section>
-        <section className={s.products} ref={productsRef} id="all-soups">
-          <h2>All our soups</h2>
+        <section className={s.products}>
+          <h2>Our soups</h2>
           <ul>
             {products.map(({ id, name, priceSEK, imageURL }) => (
               <li key={id}>
-                <Link href={`/product/${generateSlug(id, name)}`}>
+                <Link href={`/products/${generateSlug(id, name)}`}>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                   <a>
                     <ProductCard

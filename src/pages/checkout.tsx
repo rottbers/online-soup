@@ -48,7 +48,7 @@ const CheckoutPage: React.FC = () => {
       <Head title="Checkout" />
       <Layout>
         <header className={s.header}>
-          <RoundLink href="/" type="back" />
+          <RoundLink href="/products" type="back" />
           <h1>Checkout</h1>
           <div></div>
         </header>
