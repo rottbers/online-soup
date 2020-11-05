@@ -2,11 +2,16 @@
 
 .header {
   grid-row: 1 / 2;
-  grid-column: 2 / 3;
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: $gutter;
+
+  h1 {
+    margin: 0;
+  }
 
   nav,
   div {

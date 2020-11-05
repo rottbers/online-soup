@@ -28,13 +28,15 @@ const ProductsPage: React.FC = () => {
         <header className={s.header}>
           <RoundLink type="back" href="/" />
           <h1>Our soups</h1>
-          {itemsInCart > 0 && (
+          {itemsInCart > 0 ? (
             <RoundLink
               type="cart"
               href="/checkout"
               badge
               badgeContent={itemsInCart}
             />
+          ) : (
+            <div />
           )}
         </header>
         <ul className={s.products}>

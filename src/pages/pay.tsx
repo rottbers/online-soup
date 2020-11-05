@@ -131,7 +131,7 @@ const PaymentPage: React.FC = () => {
         <header className={s.header}>
           <nav>{!isDisabled && <RoundLink href="/checkout" type="back" />}</nav>
           <h1>Payment</h1>
-          <div></div>
+          <div />
         </header>
         <form className={s.form} onSubmit={onSubmit}>
           <span role="alert">{paymentState.error}</span>
