@@ -18,10 +18,9 @@ import { FullOrder } from '@/types/index';
 import s from '@/styles/pages/TrackingPage.module.scss';
 
 const TrackingPage: React.FC = () => {
+  const [statusCode, setStatusCode] = useState(0); // TODO: get status update from backend. mock state for now.
   const { orderId } = useRouter().query;
-  // prettier-ignore
-  const { loading, error, data } = useFetcher<FullOrder>(`/api/order/${orderId}`); // TODO: fix fetching
-  const [statusCode, setStatusCode] = useState(0); // TODO: get status from update backend. mock for now.
+  const { loading, error, data } = useFetcher<FullOrder>(orderId ? `/api/order/${orderId}` : null); // prettier-ignore
 
   if (loading) return <Spinner fullScreen />;
   if (error) return <p>Something went wrong</p>;

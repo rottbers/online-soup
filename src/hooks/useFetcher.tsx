@@ -13,7 +13,8 @@ interface UseFetcher<T> {
   loading: boolean;
 }
 
-function useFetcher<T = unknown>(url: string): UseFetcher<T> {
+// accepts null for conditional fetching https://swr.vercel.app/docs/conditional-fetching
+function useFetcher<T = unknown>(url: string | null): UseFetcher<T> {
   const { error, data } = useSWR(url, fetcher);
   return { data, error, loading: !data && !error };
 }

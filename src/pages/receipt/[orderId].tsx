@@ -15,8 +15,7 @@ import s from '@/styles/pages/ReceiptPage.module.scss';
 
 const ReceiptPage: React.FC = () => {
   const { orderId } = useRouter().query;
-  // prettier-ignore
-  const { loading, error, data } = useFetcher<FullOrder>(`/api/order/${orderId}`); // TODO: fix fetching
+  const { loading, error, data } = useFetcher<FullOrder>(orderId ? `/api/order/${orderId}` : null); // prettier-ignore
 
   if (loading) return <Spinner fullScreen />;
   if (error) return <p>Something went wrong</p>;
